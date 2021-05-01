@@ -7,6 +7,7 @@ defmodule Arvore.Leaf.Entity do
     field :inep, :string
     field :name, :string
     field :parent_id, :integer
+    field :subtree_ids, {:array, :integer}
 
     timestamps()
   end
