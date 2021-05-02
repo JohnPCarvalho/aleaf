@@ -38,6 +38,25 @@ defmodule Arvore.Leaf do
   def get_entity!(id), do: Repo.get!(Entity, id)
 
   @doc """
+  Gets the ids related to the entity by the parent_id field
+
+  Raises `Ecto.NoResultsError` if the Entity does no exist.
+
+  """
+
+  def get_parents!(id, entity_type) do
+    cond do
+      entity_type == "network" ->
+        Ecto.Adapters.SQL.query!(Arvore.Repo, "SELECT id from entities WHERE parent_id = ? AND entity_type = 'school'" , [id])
+      entity_type == "school" ->
+        Ecto.Adapters.SQL.query!(Arvore.Repo, "SELECT id from entities WHERE parent_id = ? OR entity_type = 'network' OR entity_type = 'class'", [id])
+      entity_type == "class" ->
+        Ecto.Adapters.SQL.query!(Arvore.Repo, "SELECT id from entities WHERE parent_id = ? AND entity_type = 'school'" , [id])
+    end
+
+  end
+
+  @doc """
   Creates a entity.
 
   ## Examples
