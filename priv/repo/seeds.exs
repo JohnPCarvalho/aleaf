@@ -12,8 +12,11 @@
 
 IO.puts("Adding a couple of items...")
 
-Arvore.Leaf.create_entity(%{name: "Colégio Objetivo", entity_type: "network", inep: "123", parent_id: nil })
-Arvore.Leaf.create_entity(%{name: "SESI", entity_type: "network", inep: "321", parent_id: nil })
+Arvore.Leaf.create_entity(%{name: "Colégio Objetivo", entity_type: "network", inep: nil, parent_id: nil })
+Arvore.Leaf.create_entity(%{name: "SESI", entity_type: "network", inep: nil, parent_id: nil })
 Arvore.Leaf.create_entity(%{name: "Colégio Objetivo Monte Alto", entity_type: "school", inep: "123-300", parent_id: 1 })
 Arvore.Leaf.create_entity(%{name: "Colégio Objetivo Rio de Janeiro", entity_type: "school", inep: "123-2", parent_id: 1 })
-Arvore.Leaf.create_entity(%{name: "SESI - Unidade São Paulo", entity_type: "school", inep: "321-1", parent_id: 2 })
+Arvore.Leaf.create_entity(%{name: "SESI - Unidade São Paulo", entity_type: "school", inep: "1211", parent_id: 2 })
+Arvore.Leaf.create_entity(%{name: "COC", entity_type: "network", inep: nil, parent_id: nil })
+Arvore.Leaf.create_entity(%{name: "COC - Rio", entity_type: "school", inep: "998", parent_id: 6 })
+Arvore.Leaf.create_entity(%{name: "Turma 3A", entity_type: "class", inep: nil, parent_id: 6 })
