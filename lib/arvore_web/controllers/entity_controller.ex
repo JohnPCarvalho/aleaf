@@ -1,5 +1,6 @@
 defmodule ArvoreWeb.EntityController do
   use ArvoreWeb, :controller
+  require Logger
 
   alias Arvore.Leaf
   alias Arvore.Leaf.Entity
@@ -22,6 +23,7 @@ defmodule ArvoreWeb.EntityController do
 
   def show(conn, %{"id" => id}) do
     entity = Leaf.get_entity!(id)
+    parents_id = Leaf.get_parents!(id, entity.entity_type)
     render(conn, "show.json", entity: entity)
   end
 
