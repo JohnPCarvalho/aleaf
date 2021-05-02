@@ -7,7 +7,7 @@ defmodule Arvore.Leaf.Entity do
     field :inep, :string
     field :name, :string
     field :parent_id, :integer
-    field :subtree_ids, {:array, :integer}
+    #field :subtree_ids, {:array, :integer}
 
     timestamps()
   end
@@ -16,6 +16,6 @@ defmodule Arvore.Leaf.Entity do
   def changeset(entity, attrs) do
     entity
     |> cast(attrs, [:name, :entity_type, :inep, :parent_id])
-    |> validate_required([:name, :entity_type, :inep])
+    |> validate_required([:name, :entity_type])
   end
 end
