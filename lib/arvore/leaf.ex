@@ -49,7 +49,7 @@ defmodule Arvore.Leaf do
       entity_type == "network" ->
         Ecto.Adapters.SQL.query!(Arvore.Repo, "SELECT id from entities WHERE parent_id = ? AND entity_type = 'school'" , [id])
       entity_type == "school" ->
-        Ecto.Adapters.SQL.query!(Arvore.Repo, "SELECT id from entities WHERE parent_id = ? OR entity_type = 'network' OR entity_type = 'class'", [id])
+        Ecto.Adapters.SQL.query!(Arvore.Repo, "SELECT id from entities WHERE parent_id = ? AND (entity_type = 'network' OR entity_type = 'class')", [id])
       entity_type == "class" ->
         Ecto.Adapters.SQL.query!(Arvore.Repo, "SELECT id from entities WHERE parent_id = ? AND entity_type = 'school'" , [id])
     end
