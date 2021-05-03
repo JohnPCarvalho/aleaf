@@ -24,13 +24,31 @@ defmodule ArvoreWeb.EntityController do
   def show(conn, %{"id" => id}) do
     entity = Leaf.get_entity!(id)
     parents_id = Leaf.get_parents!(id, entity.entity_type)
-    render(conn, "show.json", entity: entity)
+    subtree = parents_id.rows
+    json(conn, %{
+      id: entity.id,
+      name: entity.name,
+      entity_type: entity.entity_type,
+      inep: entity.inep,
+      parent_id: entity.parent_id,
+      subtree_ids: subtree
+    })
   end
 
   def update(conn, %{"id" => id, "entity" => entity_params}) do
     entity = Leaf.get_entity!(id)
+    parents_id = Leaf.get_parents!(id, entity.entity_type)
+    subtree = parents_id.rows
 
     with {:ok, %Entity{} = entity} <- Leaf.update_entity(entity, entity_params) do
+      json(conn, %{
+        id: entity.id,
+        name: entity.name,
+        entity_type: entity.entity_type,
+        inep: entity.inep,
+        parent_id: entity.parent_id,
+        subtree_ids: subtree
+      })
       render(conn, "show.json", entity: entity)
     end
   end
