@@ -25,13 +25,15 @@ defmodule ArvoreWeb.EntityController do
     entity = Leaf.get_entity!(id)
     parents_id = Leaf.get_parents!(id, entity.entity_type)
     subtree = parents_id.rows
+    new_subtree = Enum.map(subtree, fn [ids] -> ids end)
+
     json(conn, %{
       id: entity.id,
       name: entity.name,
       entity_type: entity.entity_type,
       inep: entity.inep,
       parent_id: entity.parent_id,
-      subtree_ids: subtree
+      subtree_ids: new_subtree
     })
   end
 
@@ -39,6 +41,7 @@ defmodule ArvoreWeb.EntityController do
     entity = Leaf.get_entity!(id)
     parents_id = Leaf.get_parents!(id, entity.entity_type)
     subtree = parents_id.rows
+    new_subtree = Enum.map(subtree, fn [ids] -> ids end)
 
     with {:ok, %Entity{} = entity} <- Leaf.update_entity(entity, entity_params) do
       json(conn, %{
@@ -47,7 +50,7 @@ defmodule ArvoreWeb.EntityController do
         entity_type: entity.entity_type,
         inep: entity.inep,
         parent_id: entity.parent_id,
-        subtree_ids: subtree
+        subtree_ids: new_subtree
       })
       render(conn, "show.json", entity: entity)
     end
