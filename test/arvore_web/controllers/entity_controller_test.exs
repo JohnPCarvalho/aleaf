@@ -5,16 +5,16 @@ defmodule ArvoreWeb.EntityControllerTest do
   alias Arvore.Leaf.Entity
 
   @create_attrs %{
-    entity_type: "some entity_type",
+    entity_type: "class",
     inep: "some inep",
     name: "some name",
-    parent_id: 42
+    parent_id: nil
   }
   @update_attrs %{
-    entity_type: "some updated entity_type",
+    entity_type: "class",
     inep: "some updated inep",
     name: "some updated name",
-    parent_id: 43
+    parent_id: nil
   }
   @invalid_attrs %{entity_type: nil, inep: nil, name: nil, parent_id: nil}
 
@@ -43,11 +43,11 @@ defmodule ArvoreWeb.EntityControllerTest do
 
       assert %{
                "id" => id,
-               "entity_type" => "some entity_type",
+               "entity_type" => "class",
                "inep" => "some inep",
                "name" => "some name",
-               "parent_id" => 42
-             } = json_response(conn, 200)["data"]
+               "parent_id" => nil
+             } = json_response(conn, 200)
     end
 
     test "renders errors when data is invalid", %{conn: conn} do
@@ -67,11 +67,11 @@ defmodule ArvoreWeb.EntityControllerTest do
 
       assert %{
                "id" => id,
-               "entity_type" => "some updated entity_type",
+               "entity_type" => "class",
                "inep" => "some updated inep",
                "name" => "some updated name",
-               "parent_id" => 43
-             } = json_response(conn, 200)["data"]
+               "parent_id" => nil
+             } = json_response(conn, 200)
     end
 
     test "renders errors when data is invalid", %{conn: conn, entity: entity} do
