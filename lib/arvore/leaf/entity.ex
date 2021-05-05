@@ -16,6 +16,7 @@ defmodule Arvore.Leaf.Entity do
     entity
     |> cast(attrs, [:name, :entity_type, :inep, :parent_id])
     |> foreign_key_constraint(:parent_id)
+    |> unique_constraint(:inep)
     |> validate_required([:name, :entity_type])
   end
 end
