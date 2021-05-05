@@ -4,8 +4,8 @@ use Mix.Config
 config :arvore, Arvore.Repo,
   username: "root",
   password: "12qwaszx",
-  database: "arvore_dev",
-  hostname: "localhost",
+  database: "arvore",
+  hostname: "34.95.177.230",
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
 

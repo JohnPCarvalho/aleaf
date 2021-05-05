@@ -18,12 +18,20 @@ config :arvore, ArvoreWeb.Endpoint,
 config :logger, level: :info
 
 # Configure your database
+#config :arvore, Arvore.Repo,
+#adapter: Ecto.Adapters.MyXQL,
+#url: [scheme: "https", host: "https://arvore.herokuapp.com/", port: 443],
+#force_ssl: [rewrite_on: [:x_forwarded_proto]],
+#pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
+#ssl: true
+
 config :arvore, Arvore.Repo,
-adapter: Ecto.Adapters.MyXQL,
-url: [scheme: "https", host: "https://arvore.herokuapp.com/", port: 443],
-force_ssl: [rewrite_on: [:x_forwarded_proto]],
-pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
-ssl: true
+  username: "root",
+  password: "12qwaszx",
+  database: "arvore",
+  hostname: "34.95.177.230",
+  show_sensitive_data_on_connection_error: true,
+  pool_size: 10
 
 # ## SSL Support
 #
