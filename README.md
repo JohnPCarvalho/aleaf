@@ -68,7 +68,7 @@ Obs: dentro do projeto, na pasta ` priv/seeds.exs `, há um arquivo para aliment
 
 Agora você pode começar a consumir os endpoints no endereço `localhost:4000/api/entities`
 
-##Deploy
+## Deploy
 
 O deploy da aplicação foi feito utilizando Google Cloud Services composto de uma instância VM com Debian 10, e uma instância de banco de dados como serviço utilizando MySQL na versão especificada.
 
