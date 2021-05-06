@@ -16,10 +16,10 @@ Requisitos Desejáveis:
 - [x] - Deploy em qualquer serviço para consumo durante avaliação
 
 Ferramentas:
-* Elixir:   1.10.4 
-* Erlang/OTP:  23
+* Elixir: 1.10.4 
+* Erlang/OTP: 23.1.1
 * Phoenix: 1.5.8
-* MySQL: 8.0.0.24
+* MySQL: 8.0.24
 
 Clone o repositório com o seguinte comando:
 
@@ -36,7 +36,7 @@ Primeiramente, é necessário ter uma instância do MySQL pronta para uso, para 
 Dentro da pasta do projeto, na pasta `config `, abra os arquivos `dev.exs` e `test.exs ` e edite da seguinte maneira:
 
 `dev.exs`:
-```
+```elixir
 config :arvore, Arvore.Repo,
   username: <seu_usuario>,
   password: <sua_senha>,
@@ -47,7 +47,7 @@ config :arvore, Arvore.Repo,
 ```
 
 `test.exs`
-```
+```elixir
 config :arvore, Arvore.Repo,
   username: <seu_usuario>,
   password: <sua_senha>
@@ -68,9 +68,19 @@ Obs: dentro do projeto, na pasta ` priv/seeds.exs `, há um arquivo para aliment
 
 Agora você pode começar a consumir os endpoints no endereço `localhost:4000/api/entities`
 
+##Deploy
+
+O deploy da aplicação foi feito utilizando Google Cloud Services composto de uma instância VM com Debian 10, e uma instância de banco de dados como serviço utilizando MySQL na versão especificada.
+
+Obs: Esta estrutura atende apenas como ambiente de testes. Em ambientes de produção, o recomendado é utilizar clusterização, com load balancer.
+
+Para consumir os endpoints da aplicação, basta acessar o seguinte endereço e seguir os modelos de requisição dentro da seção [Endpoints](##Endpoints)
+http://justaleaf.hopto.org:4000/api/entities
+
+
 ------------
 
-## Endpoints
+## Endpoints 
 Para o consumo dos endpoints é possível utilizar ferramentas como o [Postman](https://www.postman.com/ "Postman") ou o [Insomnia](https://insomnia.rest/download "Insomnia") ou diretamente com `curl ` via terminal.
 
 - Criação de  entidade (entity):
@@ -78,7 +88,7 @@ Para o consumo dos endpoints é possível utilizar ferramentas como o [Postman](
 http://localhost:4000/api/entities
 POST request: 
 
-```
+```json
 {
     "entity": {
         "name": "COC - Unidade SP",
@@ -89,7 +99,7 @@ POST request:
 }
 ```
 Response:
-```
+```json
 {
     "data": {
         "entity_type": "school",
@@ -107,7 +117,7 @@ Response:
 
 http://localhost:4000/api/entities/7    onde 7 é o id passado para a alteração
 PUT request:
-```
+```json
 {
     "entity": {
         "name": "COC - Unidade Rio",
@@ -120,7 +130,7 @@ PUT request:
 ```
 
 Response:
-```
+```json
 {
     "entity_type": "school",
     "id": 7,
@@ -137,7 +147,7 @@ Response:
 
 GET request:
 http://localhost:4000/api/entities/6 onde 6 é o id passado para pesquisa
-```
+```json
 {
     "entity_type": "network",
     "id": 6,
