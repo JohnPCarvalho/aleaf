@@ -64,7 +64,7 @@ Para iniciar seu servidor Phoenix:
 * Inicie o servidor com `mix phx.server`
 * Para executar os testes unitários:`mix test`
 
-Obs: dentro do projeto, na pasta ` priv/seeds.exs `, há um arquivo para alimentar a base com alguns dados de início, ao rodar o comando ` mic ecto.setup` ou `mix ecto.reset`, o arquivo será lido, e os dados inseridos.
+Obs: dentro do projeto, na pasta ` priv/seeds.exs `, há um arquivo para alimentar a base com alguns dados de início, ao rodar o comando ` mix ecto.setup` ou `mix ecto.reset`, o arquivo será lido, e os dados inseridos.
 
 Agora você pode começar a consumir os endpoints no endereço `localhost:4000/api/entities`
 
